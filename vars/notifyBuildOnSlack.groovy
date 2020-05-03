@@ -3,14 +3,14 @@ import groovy.json.JsonSlurper
 
 def call( String messageTitle, String messageText, String textColor) 
 {
-    jsonAttachement='[{"color":"' + textColor + '","title":"' + messageTitle + '","text":"' + messageText + '","mrkdwn_in":["text","pretext"]}]'      
+  //  jsonAttachement='[{"color":"' + textColor + '","title":"' + messageTitle + '","text":"' + messageText + '"}]'      
 
     def attachmenPayload = [[
             fallback: "Project execution ",
-            color: colorCode,
+            color: textColor,
             fields:[
                 [
-                    title: "${project}",
+                    title: "Project",
                     value: "Build ",
                     short: false
                 ],
@@ -26,9 +26,6 @@ def call( String messageTitle, String messageText, String textColor)
                 ]
             ]
         ]]
-// Send notifications
 
-
-
-    slackSend(attachments: jsonAttachement)
+    slackSend(color: textColor, attachments: new JsonBuilder(attachmenPayload).toPrettyString() )
 }
