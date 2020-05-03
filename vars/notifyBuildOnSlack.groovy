@@ -1,7 +1,9 @@
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 
-def call( String messageText, String textColor) 
+def call( String messageTitle, String messageText, String textColor) 
 {
-    slackSend color: textColor, message: messageText
+    jsonAttachement='{"attachments":[{"color":"' + textColor + '","title":"' + messageTitle + '","text":"' + messageText + '","mrkdwn_in":["text","pretext"]}]}'      
+
+    slackSend(attachments: jsonAttachement)
 }
