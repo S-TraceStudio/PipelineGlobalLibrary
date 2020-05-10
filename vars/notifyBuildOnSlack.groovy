@@ -1,10 +1,10 @@
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 
-def call( String messageTitle, String buildNumber, String gitBranch, String gitCommit, String textColor) 
+def call( String messageTitle, String messageFallback, String buildNumber, String gitBranch, String gitCommit, String textColor) 
 {
     def attachmenPayload = [[
-        fallback: "Project execution",
+        fallback: messageFallback,
         color: textColor,
         fields:[
             [
