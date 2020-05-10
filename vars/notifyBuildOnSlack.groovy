@@ -25,5 +25,5 @@ def call( String messageTitle, String messageText, String textColor)
         ]
     ]]
 
-    slackSend(channel: '#jenkins', color: '#0000FF', attachments: new JsonBuilder(attachmenPayload).toPrettyString() )
+    slackSend(channel: '#jenkins', color: textColor, attachments: new JsonBuilder(attachmenPayload).toPrettyString() )
 }
